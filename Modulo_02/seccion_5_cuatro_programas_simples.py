@@ -269,3 +269,129 @@ for char in text:
         cipher += char
 
 print("Texto encriptado:", cipher)
+
+
+# Ejercicio 2 - Palíndromos
+
+"""
+    ¿Sabes qué es un palíndromo?
+
+    Es una palabra que se ve igual cuando se lee hacia adelante y hacia atrás. Por ejemplo, 
+    "kayak" es un palíndromo, mientras que "leal" no lo es.
+
+    Tu tarea es escribir un programa que:
+
+    Le pida al usuario algún texto.
+    Compruebe si el texto introducido es un palíndromo e imprima el resultado.
+
+    Nota:
+
+    - Supón que una cadena vacía no es un palíndromo.
+    - Trata a las letras mayúsculas y minúsculas como iguales.
+    - Los espacios no se toman en cuenta durante la verificación: trátalos como inexistentes.
+    - Existe más de una solución correcta: intenta encontrar más de una.
+"""
+
+# Prueba tu código utilizando los datos que te proporcionamos:
+
+# Datos de prueba:
+
+"""
+    Entrada de muestra: Ten animals I slam in a net
+    Salida de muestra: Es un palíndromo
+
+    Entrada de muestra: Eleven animals I slam in a net
+    Salida de muestra: No es un palíndromo
+"""
+
+# --- Código de respuesta ---
+
+text = input("Ingrese un texto: ").lower()
+
+# solo permite letras con tilde, ñ, etc
+
+text = input("Ingrese un texto: ").lower()
+
+# Filtrar solo letras (permite letras con tilde, ñ, etc.)
+filtered = [char for char in text if char.isalpha()]
+
+if len(text) and filtered == filtered[::-1]:
+    print("Es un palíndromo")
+else:
+    print("No es un palíndromo")
+
+
+# o tambien:
+
+"""
+    text = input("Ingresa un texto: ")
+
+    # Quitar todos los espacios...
+    text = text.replace(' ','')
+
+    # ... y revisar si la palabra es igual en ambos sentidos
+    if len(text) > 1 and text.upper() == text[::-1].upper():
+        print("Es un palíndromo")
+    else:
+        print("No es un palíndromo")
+"""
+
+
+# Ejercicio 3 - Anagramas
+
+"""
+    Un anagrama es una nueva palabra formada al reorganizar las letras de una palabra, 
+    usando todas las letras originales exactamente una vez. Por ejemplo, las frases "rail safety" 
+    y "fairy tales" son anagramas, mientras que "I am" y "You are" no lo son.
+
+    Tu tarea es escribir un programa que:
+
+    - Le pida al usuario dos textos por separado.
+    - Compruebe si los textos ingresados son anagramas e imprima el resultado.
+    
+    Nota:
+
+    Supongamos que dos cadenas vacías no son anagramas.
+    Tratar a las letras mayúsculas y minúsculas como iguales.
+    Los espacios no se toman en cuenta durante la verificación: trátalos como inexistentes.
+"""
+
+# Prueba tu código utilizando los datos que te proporcionamos.
+
+# Datos de prueba:
+
+"""
+    Entrada de muestra: Listen y Silent
+    Salida de muestra: Anagramas
+
+    Entrada de muestra: modern y norman
+    Salida de muestra: No son anagramas
+"""
+
+# --- Código de respuesta ---
+
+text1 = input("Imgrese el primer texto: ").upper().replace(" ", "")
+text2 = input("Imgrese el segundo texto: ").upper().replace(" ", "")
+
+if text1 and text2:
+    if sorted(text1) == sorted(text2):
+        print("Anagramas")
+    else:
+        print("No son anagramas")
+else:
+    print("No son anagramas")
+
+
+# o tambien:
+
+"""
+    str_1 = input("Ingresa la primera cadena: ")
+    str_2 = input("Ingresa la segunda cadena: ")
+
+    strx_1 = ''.join(sorted(list(str_1.upper().replace(' ',''))))
+    strx_2 = ''.join(sorted(list(str_2.upper().replace(' ',''))))
+    if len(strx_1) > 0 and strx_1 == strx_2:
+        print("Anagramas")
+    else:
+        print("No son anagramas")
+"""
