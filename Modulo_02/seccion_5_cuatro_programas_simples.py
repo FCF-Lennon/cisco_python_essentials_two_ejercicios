@@ -457,3 +457,81 @@ else:
         date = str(the_sum)
     print("Tu Dígito de la Vida es: " + date)
  """
+
+
+# Ejercicio 05 - Encuentra una palabra
+
+"""
+    Vamos a jugar un juego. Te daremos dos cadenas: una es una palabra (por ejemplo, "dog") y la segunda es una 
+    combinación de un grupo de caracteres.
+
+    Tu tarea es escribir un programa que responda la siguiente pregunta: ¿Los caracteres que comprenden la primera 
+    cadena están ocultos dentro de la segunda cadena?
+
+    Por ejemplo:
+
+    - Si la segunda cadena es "vcxzxduybfdsobywuefgas", la respuesta es si;
+    - Si la segunda cadena es "vcxzxdcybfdstbywuefsas", la respuesta es no 
+      (ya que no están las letras "d", "o", o "g" ni en ese orden)
+    
+    Pistas:
+
+    Debes usar las variantes de dos argumentos de las funciones pos() dentro de tu código.
+    No te preocupes por mayúsculas y minúsculas.
+"""
+
+# Prueba tu código utilizando los datos que te proporcionamos.
+
+# Datos de Prueba:
+
+"""
+    Entreda de Muestra: donor, Nabucodonosor
+    Salida de Muestra: Si
+
+    Entrada de Muestra: donut, Nabucodonosor
+    Salida de Muestra: No
+"""
+
+
+# --- Código de respuesta ---
+
+def buscar_palabra(palabra, grupo_caracteres):
+    palabra = palabra.lower()
+    grupo_caracteres = grupo_caracteres.lower()
+    
+    posicion = 0
+    
+    for letra in palabra:
+        posicion = grupo_caracteres.find(letra, posicion)
+        print(posicion)
+        if posicion == -1:
+            print("No, la palabra NO está oculta en el grupo de caracteres.")
+            return
+    
+    print("Sí, la palabra está oculta en el grupo de caracteres.")
+
+# Datos de prueba
+buscar_palabra("donor", "Nabucodonosor")   # Sí
+buscar_palabra("donut", "Nabtucodonosor")   # No
+
+
+# o tambien:
+
+"""
+    word = input("Ingresa la palabra que deseas encontrar: ").upper()
+    strn = input("Ingresa la cadena en donde deseas buscar: ").upper()
+
+    found = True
+    start = 0
+
+    for ch in word:
+        pos = strn.find(ch, start) 
+        if pos < 0:
+            found = False
+            break
+        start = pos + 1
+    if found:
+        print("Si")
+    else:
+        print("No")
+"""
