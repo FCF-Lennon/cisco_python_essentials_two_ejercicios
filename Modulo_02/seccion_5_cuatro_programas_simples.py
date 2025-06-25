@@ -535,3 +535,149 @@ buscar_palabra("donut", "Nabtucodonosor")   # No
     else:
         print("No")
 """
+
+
+# Ejercicio 5 - Sudoku
+
+"""
+    Como probablemente sabes, Sudoku es un rompecabezas de colocación de números jugado en un 
+    tablero de 9x9. El jugador tiene que llenar el tablero de una manera muy específica:
+
+    - Cada fila del tablero debe contener todos los dígitos del 0 al 9 (el orden no importa).
+    - Cada columna del tablero debe contener todos los dígitos del 0 al 9 (nuevamente, el orden no importa).
+    - Cada uno de los 9 subcuadros de 3x3 de la tabla debe contener todos los dígitos del 0 al 9.
+    - Si necesitas más detalles, puedes encontrarlos aquí.
+
+    Tu tarea es escribir un programa que:
+
+    - Lea las 9 filas del Sudoku, cada una con 9 dígitos (verifica cuidadosamente si los datos ingresados son válidos).
+    - Da como salida Si si el Sudoku es válido y No de lo contrario.
+"""
+
+# Prueba tu código utilizando los datos que te proporcionamos.
+
+# Datos de Prueba:
+
+"""
+    Entreda de Muestra:        Salida de Muestra: 
+    295743861                  Si
+    431865927
+    876192543
+    387459216
+    612387495
+    549216738
+    763524189
+    928671354
+    154938672
+    
+
+    Entrada de Muestra:         Salida de Muestra: 
+    195743862                   No
+    431865927
+    876192543
+    387459216
+    612387495
+    549216738
+    763524189
+    928671354
+    254938671
+"""
+
+# --- Código de respuesta ---
+
+def contiene_digitos_validos(lista):
+    """
+    Verifica que la lista contenga exactamente los dígitos del 1 al 9 sin repetir.
+    """
+    return sorted(lista) == [str(n) for n in range(1, 10)]
+
+
+def obtener_errores(tablero):
+    """
+    Devuelve un conjunto de coordenadas (fila, columna) donde hay errores en filas, 
+    columnas o subcuadros 3x3.
+    """
+    errores = set()
+
+    # Verificar filas
+    for fila in range(9):
+        if not contiene_digitos_validos(tablero[fila]):
+            for col in range(9):
+                errores.add((fila, col))
+
+    # Verificar columnas
+    for col in range(9):
+        columna = [tablero[fila][col] for fila in range(9)]
+        if not contiene_digitos_validos(columna):
+            for fila in range(9):
+                errores.add((fila, col))
+
+    # Verificar subcuadros 3x3
+    for fila_base in range(0, 9, 3):
+        print("fila base: ", fila_base)
+        for col_base in range(0, 9, 3):
+            print("columna base: ", col_base)
+            numeros = []
+            coords = []
+            for i in range(3):
+                for j in range(3):
+                    fila = fila_base + i
+                    col = col_base + j
+                    numeros.append(tablero[fila][col])
+                    coords.append((fila, col))
+            print("numeros: ", numeros)
+            print("coordenadas: ", coords)
+
+            if not contiene_digitos_validos(numeros):
+                errores.update(coords)
+                print("errores: ", errores)
+
+    return errores
+
+
+def render_sudoku_con_errores(tablero, errores):
+    """
+    Imprime el tablero de Sudoku, marcando con 'X' los valores incorrectos.
+    """
+    for fila_idx, fila in enumerate(tablero):
+        if fila_idx % 3 == 0:
+            print("+-------+-------+-------+")
+
+        for col_idx, valor in enumerate(fila):
+            if col_idx % 3 == 0:
+                print("| ", end="")
+
+            if (fila_idx, col_idx) in errores:
+                print("X", end=" ")
+            else:
+                print(valor, end=" ")
+
+        print("|")
+
+    print("+-------+-------+-------+")
+
+
+# --- TABLERO DE SUDOKU DE EJEMPLO (MODIFICA PARA PROBAR ERRORES) ---
+sudoku = [
+    list("295743861"),
+    list("431865927"),
+    list("876192543"),
+    list("387459216"),
+    list("612387495"),
+    list("549216738"),
+    list("763524189"),
+    list("928671354"),
+    list("154938672") 
+]
+
+# --- DETECTAR ERRORES ---
+errores = obtener_errores(sudoku)
+
+# --- MOSTRAR RESULTADO ---
+render_sudoku_con_errores(sudoku, errores)
+
+if errores:
+    print("Sudoku inválido: hay errores marcados con 'X'.")
+else:
+    print("Sudoku válido.")
+    
