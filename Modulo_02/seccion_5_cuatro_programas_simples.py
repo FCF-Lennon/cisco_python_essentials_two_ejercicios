@@ -537,7 +537,7 @@ buscar_palabra("donut", "Nabtucodonosor")   # No
 """
 
 
-# Ejercicio 5 - Sudoku
+# Ejercicio 06 - Sudoku
 
 """
     Como probablemente sabes, Sudoku es un rompecabezas de colocación de números jugado en un 
