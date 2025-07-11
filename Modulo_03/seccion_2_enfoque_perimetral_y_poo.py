@@ -171,7 +171,7 @@ print(adding_stack.get_sum())  # Output: 6
 
 # Laboratorio:
 
-# Ejercicio 01:
+# Ejercicio 01 - Pila contadora:
 
 """
     Recientemente te mostramos cómo extender las posibilidades de Stack definiendo una nueva 
@@ -225,7 +225,7 @@ for i in range(100):
 print(stk.get_counter())
 
 
-# Ejercicio 02:
+# Ejercicio 02 - Colas alias FIFO:
 
 """
     Como ya sabes, una cola es una estructura de datos que realiza el modelo LIFO (último en entrar, 
@@ -263,6 +263,13 @@ print(stk.get_counter())
     Queue error
 """
 
+# Eligir la clase base para la nueva excepción.
+
+"""
+    class QueueError(???):  
+        # codigo
+"""
+
 # Desarrollo:
 
 class QueueError(IndexError):  # Eligir la clase base para la nueva excepción.
@@ -295,3 +302,57 @@ try:
 except:
     print("Queue error")
     
+
+# Ejercicio 03 - Colas alias FIFO: parte 2:
+
+"""
+    Tu tarea es extender ligeramente las capacidades de la clase Queue. Queremos que tenga un método 
+    sin parámetros que devuelva True si la cola está vacía y False de lo contrario.
+
+    Completa el código que te proporcionamos en el editor. Ejecútalo para comprobar si genera un 
+    resultado similar al nuestro.
+"""
+
+# Salida Esperada:
+
+"""
+    1
+    perro
+    False
+    Cola vacía
+"""
+
+# Desarrollo:
+
+class Queue:
+    def __init__(self):
+        self.__cola = []
+
+    def put(self, elem):
+        self.__cola.insert(0, elem)
+
+    def get(self):
+        if len(self.__cola) > 0:
+            elem = self.__cola[-1]
+            del self.__cola[-1]
+            return elem
+
+
+class SuperQueue(Queue):
+    def __init__(self):
+        super().__init__()
+    
+    def verificar_valor (self):
+        return len(self._Queue__cola) == 0
+
+
+que = SuperQueue()
+que.put(1)
+que.put("perro")
+que.put(False)
+for i in range(4):
+    if not que.verificar_valor():
+        print(que.get())
+    else:
+        print("Cola vacía")
+        
