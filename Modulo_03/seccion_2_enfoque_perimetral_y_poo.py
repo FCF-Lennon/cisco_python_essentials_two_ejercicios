@@ -345,14 +345,13 @@ class SuperQueue(Queue):
     def verificar_valor (self):
         return len(self._Queue__cola) == 0
 
-
 que = SuperQueue()
 que.put(1)
 que.put("perro")
 que.put(False)
+
 for i in range(4):
     if not que.verificar_valor():
         print(que.get())
     else:
         print("Cola vacía")
-        
