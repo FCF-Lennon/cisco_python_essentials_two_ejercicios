@@ -519,3 +519,34 @@ stars = replace_spaces()
 print(stars("And Now for Something Completely Different"))
 
 # Respuesta: And*Now*for*Something*Completely*Different
+
+# NOTA:
+
+"""
+    PEP 8, la Guía de Estilo para Código Python, recomienda que las funciones 
+    lambdas no deben asignarse a variables, sino que deben definirse como funciones.
+
+    Esto significa que es mejor utilizar una sentencia def, y evita usar una 
+    sentencia de asignación que vincule una expresión lambda a un identificador. 
+    Analiza el código a continuación:
+"""
+
+# Recomendado:
+def f(x): return 3*x
+ 
+ 
+# No recomendado:
+f = lambda x: 3*x
+ 
+
+"""
+    La vinculación de lambdas a identificadores generalmente duplica la funcionalidad 
+    de la declaración def. El uso de sentencias def, por otro lado, genera más líneas 
+    de código.
+
+    Es importante comprender que a la realidad a menudo le gusta dibujar sus propios
+    escenarios, que no necesariamente siguen las convenciones o recomendaciones 
+    formales. Si decides seguirlos o no, dependerá de muchas cosas: tus preferencias, 
+    otras convenciones adoptadas, las pautas internas de la empresa, la compatibilidad 
+    con el código existente, etc. Toma en cuenta esto.
+"""
