@@ -213,6 +213,7 @@ except IOError as e:
     print("Se produjo un error de E/S:", strerror(e.errno))
 
 
+
 # Copiando archivos
 
 """
@@ -249,3 +250,73 @@ except IOError as e:
 # print(total, "byte(s) copiado(s)")
 # src.close()
 # dst.close()
+
+
+# Laboratorio:
+
+# Ejercicio 01 - Histograma de frecuencia de caracteres
+
+"""
+
+    Un archivo de texto contiene algo de texto (nada inusual) pero necesitamos 
+    saber con qué frecuencia aparece cada letra en el texto. Tal análisis puede 
+    ser útil en criptografía, por lo que queremos poder hacerlo en referencia 
+    al alfabeto latino.
+
+    Tu tarea es escribir un programa que:
+
+    - Pida al usuario el nombre del archivo de entrada.
+    - Lea el archivo (si es posible) y cuente todas las letras latinas (las 
+      letras mayúsculas y minúsculas se tratan como iguales).
+    - Imprima un histograma simple en orden alfabético (solo se deben presentar 
+      recuentos distintos de cero).
+    
+    Crea un archivo de prueba para tu código y verifica si tu histograma contiene 
+    resultados válidos.
+"""
+
+# Suponiendo que el archivo de prueba contiene solo una línea con: aBc
+# Nombre archivo: samplefile.txt
+
+# El resultado esperado debería verse de la siguiente manera:
+
+"""
+    a -> 1
+    b -> 1
+    c -> 1
+"""
+
+# Consejo: Creemos que un diccionario es un medio perfecto de recopilación de datos
+# para almacenar los recuentos. Las letras pueden ser las claves mientras que los 
+# contadores pueden ser los valores.
+
+import errno
+import string
+
+path = "./Modulo_04/Archivos/"
+
+try:
+    nombre_archivo = input("Ingrese el nombre del archivo con su extención: ").lower().strip()
+    
+    if len(nombre_archivo) > 0:
+        file = path + nombre_archivo
+    else:
+        raise Exception("El campo no puede estar vacio.")
+    
+    abrir_archivo = open(file, 'rt', encoding='utf-8')
+    conteo_caracteres = {letra: 0 for letra in string.ascii_lowercase}
+
+    for char in abrir_archivo.read().lower():
+        if char in conteo_caracteres:
+            conteo_caracteres[char] += 1
+
+    abrir_archivo.close()
+
+    for char in sorted(conteo_caracteres):
+        if conteo_caracteres[char] > 0:
+            print(f'{char} -> {conteo_caracteres[char]}')
+
+except IOError as e:
+    print(f'Error: {errno.errorcode[e.errno]}\nDescripción: {e.strerror}\nRuta: {e.filename}')
+except Exception as e:
+    print("Error:", e)
