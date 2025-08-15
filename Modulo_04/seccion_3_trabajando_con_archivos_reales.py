@@ -290,6 +290,8 @@ except IOError as e:
 # para almacenar los recuentos. Las letras pueden ser las claves mientras que los 
 # contadores pueden ser los valores.
 
+# Desarrollo:
+
 import errno
 import string
 
@@ -305,6 +307,7 @@ try:
     
     abrir_archivo = open(file, 'rt', encoding='utf-8')
     conteo_caracteres = {letra: 0 for letra in string.ascii_lowercase}
+    # O tambien: {chr(ch): 0 for ch in range(ord('a'), ord('z') + 1)}
 
     for char in abrir_archivo.read().lower():
         if char in conteo_caracteres:
@@ -320,3 +323,79 @@ except IOError as e:
     print(f'Error: {errno.errorcode[e.errno]}\nDescripción: {e.strerror}\nRuta: {e.filename}')
 except Exception as e:
     print("Error:", e)
+
+
+# Ejercicio 02 - Histograma de frecuencia de caracteres ordenado
+
+"""
+    El código anterior necesita ser mejorado. Está bien, 
+    pero tiene que ser mejor.
+
+    Tu tarea es hacer algunas enmiendas, que generen los 
+    siguientes resultados:
+
+    El histograma de salida se ordenará en función de la 
+    frecuencia de los caracteres (el contador más grande 
+    debe presentarse primero).
+
+    El histograma debe enviarse a un archivo con el mismo
+    nombre que el de entrada, pero con la extensión 
+    '.hist' (debe concatenarse con el nombre original).
+"""
+
+# Suponiendo que el archivo de prueba contiene solo una
+# línea con: cBabAa
+
+# El resultado esperado debería verse de la siguiente
+# manera: 
+
+"""
+    a -> 3
+    b -> 2
+    c -> 1
+"""
+
+# Consejo: Emplea una función lambda para cambiar el ordenamiento.
+
+# Desarrollo:
+
+import errno
+
+path = './Modulo_04/Archivos/'
+input_extension = '.txt'
+output_extension = '.hist'
+
+input_file = None
+output_file = None
+
+try: 
+    file_name = input('Ingrese el nombre del archivo: ').strip().lower()
+   
+    if len(file_name) == 0:
+        raise Exception('El campo no puede estar vacío.')
+    
+    input_file = open(path+file_name+input_extension, 'r', encoding='utf-8')
+    character_counter = {chr(ch): 0 for ch in range(ord('a'), ord('z') + 1)}
+    
+    for chr in input_file.read().lower():
+        if chr in character_counter:
+            character_counter[chr] += 1
+    
+    output_file = open(path + file_name + output_extension, 'w', encoding='utf-8')
+
+    for chr in sorted(character_counter.keys(), key=lambda key : character_counter[key], reverse=True):
+        value = character_counter[chr]
+        if value > 0:
+            output_file.write(f'{chr} -> {value}\n')
+    
+
+except IOError as e:
+    print(f'Error: {errno.errorcode[e.errno]}\nDescripción: {e.strerror}\nRuta: {e.filename}')
+except Exception as e:
+    print(f'Error: {e}')
+finally:
+    if input_file:
+        input_file.close()
+    if output_file:
+        output_file.close()
+
