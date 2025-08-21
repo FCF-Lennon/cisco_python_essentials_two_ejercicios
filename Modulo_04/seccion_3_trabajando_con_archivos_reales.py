@@ -517,3 +517,133 @@ finally:
     if input_file:
         input_file.close()
 
+
+# Resumen: 
+
+# Lectura y escritura de archivos en Python
+
+"""
+    Existen varios métodos para leer y escribir archivos en Python.
+    Aquí se presenta un resumen práctico con ejemplos.
+"""
+
+# Métodos para leer un archivo:
+
+"""
+    - read(number): lee un número específico de caracteres/bytes.
+    - readline(): lee una sola línea.
+    - readlines(number): lee un número de líneas (o todas si no se indica).
+    - readinto(bytearray): lee bytes y los coloca en un bytearray.
+"""
+
+# Ejemplo con read()
+with open("./Modulo_04/archivos/ejemplo.txt", "rt") as f:
+    contenido = f.read(20)  # lee los primeros 20 caracteres
+print(contenido)  # Muestra parte del archivo
+
+# Ejemplo con readline()
+with open("./Modulo_04/archivos/ejemplo.txt", "rt") as f:
+    linea = f.readline()  # lee la primera línea
+print(linea)
+
+# Ejemplo con readlines()
+with open("./Modulo_04/archivos/ejemplo.txt", "rt") as f:
+    lineas = f.readlines(2)  # lee 2 líneas
+print(lineas)
+
+# Ejemplo con readinto()
+ba = bytearray(10)
+with open("./Modulo_04/archivos/ejemplo.bin", "rb") as f:
+    f.readinto(ba)
+print(ba)
+
+
+# Métodos para escribir en un archivo:
+
+"""
+    - write(string): escribe cadenas de texto.
+    - write(bytearray): escribe bytes en un archivo binario.
+"""
+
+# Ejemplo con write(string)
+with open("./Modulo_04/archivos/salida.txt", "wt") as f:
+    f.write("Hola mundo\n")
+    f.write("Segunda línea\n")
+
+# Ejemplo con write(bytearray)
+datos = bytearray([65, 66, 67])  # A, B, C en ASCII
+with open("./Modulo_04/archivos/binario.bin", "wb") as f:
+    f.write(datos)
+
+
+# Recorrer un archivo línea por línea:
+
+"""
+    El método open() devuelve un objeto iterable, útil en bucles for.
+    Esto permite procesar cada línea directamente.
+"""
+
+# Ejemplo:
+# for line in open("ejemplo.txt", "rt"):
+#     print(line, end='')
+
+
+# NOTA:
+
+"""
+    Este código imprime en consola el contenido del archivo línea por línea.
+    El archivo se cierra automáticamente al final del recorrido.
+"""
+
+
+# Cuestionario:
+
+# Pregunta 01 - ¿Qué se espera del método readlines() cuando el stream está
+# asociado con un archivo vacío?
+
+# Respuesta: 
+
+"""
+    Se espera que el metodo retorne una lista vacía.
+"""
+
+# Pregunta 02 - ¿Qué se pretende hacer con el siguiente código?
+
+for line in open("./Modulo_04/archivos/text.txt", "rt"):
+    for char in line:
+        if char.lower() not in "aeiou ":
+            print(char, end='')
+
+# Respuesta:
+
+"""
+    Se espera que imprima todos los caracteres de la línea que no 
+    son vocales ni espacios.
+"""
+
+# Pregunta 03 - Vas a procesar un mapa de bits almacenado en un archivo llamado
+# image.png y quieres leer su contenido como un todo en una variable
+# bytearray llamada image. Agrega una línea al siguiente código para lograr
+# este objetivo.
+
+try:
+    stream = open("image.png", "rb")
+    # inserta una línea aquí.
+    image = bytearray(stream.read())
+    stream.close()
+except IOError:
+    print("fallido")
+else:
+    print("exitoso")
+
+# Respuesta: 
+
+"""
+    La línea correcta a insertar es:
+    
+    image = bytearray(stream.read())
+
+    Con esto, se leen todos los bytes del archivo binario "image.png"
+    y se almacenan en la variable 'image' como un objeto bytearray.
+"""
+
