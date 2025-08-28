@@ -270,3 +270,27 @@ searcher = DirectorySearcher()
 if not searcher.find(ruta, directorio):
     print(f"No se encontró el directorio '{directorio}' en la ruta '{ruta}'")
 
+
+
+# Questionario:
+
+# Pregunta 01 - ¿Cuál es el resultado del siguiente fragmento si se 
+# ejecuta en Unix?
+
+import os
+print(os.name)
+
+# Respuesta: Imprimirá 'posix', que es el identificador 
+# de Unix/Linux/Mac. En cambio, para Windows sería 'nt'.
+
+
+# Pregunta 02 - ¿Cuál es el resultado del siguiente fragmento de código?
+
+import os
+
+os.mkdir("hello")
+print(os.listdir())
+
+# Respuesta: Imprimirá una lista con los nombres de los archivos 
+# y directorios en el directorio actual, incluyendo "hello".
+
