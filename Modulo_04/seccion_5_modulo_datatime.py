@@ -197,3 +197,51 @@ print("\nOperaciones con timedelta:")
 print("Multiplicación:", delta * 2) # Multiplicación
 print("Suma de fecha y timedelta:", d2 + delta) # Suma de fecha y timedelta
 print("Suma de datetime y timedelta:", dt2 + delta) # Suma de datetime y timedelta
+
+
+# Laboratorio - Los módulos datetime y time
+
+"""
+    Durante este curso, has aprendido sobre el método strftime, 
+    que requiere conocimiento de las directivas para crear un formato.
+    Ahora es el momento de poner en práctica estas directivas.
+
+    Por cierto, tendrás la oportunidad de practicar el trabajo con documentación, 
+    porque tendrás que encontrar directivas que aún no conoces.
+"""
+
+# Aque está tu tarea:
+
+"""
+    Escribe un programa que cree un objeto datetime para el 4 de
+    noviembre de 2020, 14:53:00. El objeto creado debe llamar al método strftime
+    con el formato apropiado para mostrar el siguiente resultado:
+
+    2020/11/04 14:53:00
+    20/November/04 14:53:00 PM
+    Wed, 2020 Nov 04
+    Wednesday, 2020 November 04
+    Día de la semana: 3
+    Día del año: 309
+    Número de semana en el año: 44
+"""
+
+# Nota: Cada línea de resultado debe crearse llamando al método strftime()
+# con al menos una directiva en el argumento de formato.
+
+
+# Desarrollo:
+
+from datetime import datetime
+
+fecha_sin_formato = datetime(2020, 11, 4, 14, 53, 0)
+print("\nLaboratorio: ")
+print(fecha_sin_formato.strftime('%Y/%m/%d %H:%M:%S'))
+print(fecha_sin_formato.strftime('%Y/%B/%d %H:%M:%S %p'))
+print(fecha_sin_formato.strftime('%a, %Y %b %d'))
+print(fecha_sin_formato.strftime('%A, %Y %B %d'))
+print('Día de la semana: ', fecha_sin_formato.isoweekday())
+print('Dia del año: ', fecha_sin_formato.strftime('%j'))
+print('Número de semana en el año: ', fecha_sin_formato.isocalendar()[1]) # Depende de convención ISO 8601
+print('Número de semana en el año: ', fecha_sin_formato.strftime('%W')) # Lunes como primer día de la semana
+print('Número de semana en el año: ', fecha_sin_formato.strftime('%U')) # Domingo como primer día de la semana
