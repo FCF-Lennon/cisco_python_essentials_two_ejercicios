@@ -245,3 +245,29 @@ print('Dia del año: ', fecha_sin_formato.strftime('%j'))
 print('Número de semana en el año: ', fecha_sin_formato.isocalendar()[1]) # Depende de convención ISO 8601
 print('Número de semana en el año: ', fecha_sin_formato.strftime('%W')) # Lunes como primer día de la semana
 print('Número de semana en el año: ', fecha_sin_formato.strftime('%U')) # Domingo como primer día de la semana
+
+
+# Cuestionario:
+
+# Pregunta 01 - ¿Cuál es el resultado del siguiente fragmento de código?
+
+from datetime import time
+
+t = time( 14, 53)
+print(t.strftime("%H:%M:%S"))
+
+# Respuesta: imprimirá "14:53:00" según la directiva de formato %H:%M:%S.
+
+
+# Pregunta 02 - ¿Cuál es el resultado del siguiente fragmento de código?
+
+from datetime import datetime
+
+dt1 = datetime(2020, 9, 29, 14, 41, 0)
+dt2 = datetime(2020, 9, 28, 14, 41, 0)
+
+print(dt1 - dt2)
+
+# Respuesta: imprimirá la diferencia entre ambas fechas como un objeto timedelta.
+# En este caso: "1 day, 0:00:00".
+
