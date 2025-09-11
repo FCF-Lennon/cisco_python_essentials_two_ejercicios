@@ -121,3 +121,63 @@ for week in weeks:
 # Devuelve una lista de semanas del mes.
 # Cada semana es una lista de tuplas (día_del_mes, día_de_la_semana).
 # Los días fuera del mes aparecen como 0.
+
+
+# Laboratorio - El módulo calendar:
+
+"""
+    Durante este curso, echamos un breve vistazo a la clase
+    Calendar. Tu tarea ahora es ampliar su funcionalidad con 
+    un nuevo método llamado count_weekday_in_year, que toma 
+    un año y un día de la semana como parámetros, y luego
+    devuelve el número de ocurrencias de un día de la semana
+    especifico en el año.
+
+    Utiliza los siguientes consejos:
+
+        - Crea una clase llamada MyCalendar que se extiende de la
+          clase Calendar.
+        - Crea un método count_weekday_in_year con los parámetros
+          de year y weekday. El parámetro weekday debe tener un valor
+          entre 0 y 6 (0 = lunes, 6 = domingo) un día de la semana
+          específico en el año.
+        - En tu implementación, usa el método monthdays2calendar de la
+          clase Calendar.
+"""
+
+# Los siguientes son resultados esperados de ejemplo:
+# Argumentos de muestra: year=2019, weekday=0 (lunes)
+
+# Salida esperada: 52 (hay 52 lunes en 2019).
+
+
+# Desarrollo:
+
+class MyCalendar(calendar.Calendar):
+    def count_weekday_in_year(self, year, weekday):
+        count_day = 0
+        print("Aqui estamos:")
+        for month in range(1, 13):
+            for week in self.monthdays2calendar(year, month):
+                for day, wd in week:
+                   if day != 0 and wd == weekday:
+                       count_day += 1
+        return count_day
+        
+date = "2019"
+number_day = "0"
+
+try:
+    if not date.isdigit() or not number_day.isdigit():
+        raise Exception ("Solo se permiten números")
+    elif len(date) != 4:
+        raise Exception ("El año debe tener 4 digitos.")
+    elif int(number_day) < 0 or int(number_day) > 6:
+        raise Exception("El día de la semana debe estar entre 0 y 6.")
+    
+    count_day = MyCalendar()
+    print(count_day.count_weekday_in_year(int(date), int(number_day)))
+
+except Exception as e:
+    print("Error: ", e)
+
