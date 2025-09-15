@@ -181,3 +181,26 @@ try:
 except Exception as e:
     print("Error: ", e)
 
+
+
+# Questionario:
+
+# Pregunta 01 - ¿Cuál es el resultado del siguiente fragmento de código?
+
+import calendar
+print(calendar.weekheader(1))
+
+# Respuesta: imprimirá la inicial de los días de la semana, separados por un espacio.
+# Por defecto: M T W T F S S (comenzando en lunes).
+
+
+# Pregunta 02 - ¿Cuál es el resultado del siguiente fragmento de código?
+
+import calendar
+c = calendar.Calendar()
+for weekday in c.iterweekdays():
+    print(weekday, end=" ")
+
+# Respuesta: imprimirá los números de los días de la semana, de 0 a 6.
+# Por defecto: 0 1 2 3 4 5 6 (donde 0 corresponde a lunes y 6 a domingo).
+
