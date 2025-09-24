@@ -302,3 +302,251 @@ print(hasattr(A, 'a'))
     - False / Respuesta
     - 0
 """
+
+
+# Pregunta 19 - ¿Cuál es el resultado esperado del siguiente código?
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+
+print(issubclass(A, C))
+
+
+"""
+    Opciones:
+
+    - El código imprimirá False. / Respuesta
+    - El código imprimirá True.
+    - El código impirmirá 1.
+    - El código generará una excepción.
+"""
+
+
+# Pregunta 20 - El flujo o stream sys.stderr normalmente se asocia con:
+
+"""
+    Opciones:
+
+    - La pantalla / Respuesta
+    - El teclado 
+    - La impresora
+    - Un dispositivo nulo
+""" 
+
+
+# Pregunta 21 - ¿Cuál es el resultado esperado al ejecutar el siguiente código?
+
+""" 
+    class A:
+        def __init__(self, v):
+            self.__a = v + 1
+
+    a = A(0)
+    print(a.__a) 
+"""
+
+"""
+    Opciones:
+
+    - El código imprimirá 0
+    - El código imprimirá 1
+    - El código generará una excepción AttributeError / Respuesta
+    - El código imprimirá 2
+"""
+
+
+# Pregunta 22 - ¿Cuál es el resultado esperado al ejecutar el siguiente código?
+
+""" 
+    class A:
+        def __init__(self):
+            pass
+
+    a = A(1)
+    print(hasattr(a, 'A'))
+"""
+"""
+    Opciones:
+
+    - El código generará una excepción / Respuesta
+    - El código imprimirá True
+    - El código imprimirá 1
+    - El código imprimirá False
+"""
+
+
+# Pregunta 23 - ¿Cuál es el resultado esperado al ejecutar el siguiente código?
+
+class A:
+    def a(self):
+        print('a')
+    
+class B:
+    def a(self):
+        print('b')
+
+class C(B, A):
+    def c(self):
+        self.a()
+
+o = C()
+o.c()
+
+
+"""
+    Opciones:
+
+    - El código imprimirá b / Respuesta
+    - El código imprimirá a 
+    - El código generará una excepción
+    - El código imprimirá c
+"""
+
+# Pregunta 24 - ¿Cuál es el resultado esperado al ejecutar el siguiente
+# código?
+
+try:
+    raise Exception(1, 2, 3)
+except Exception as e:
+    print(len(e.args))
+
+"""
+    Opciones:
+
+    - El código imprimirá 3 / Respuesta
+    - El código imprimirá 2
+    - El código imprimirá 1
+    - El código generará una excepción no controlada.
+"""
+
+
+# Pregunta 25 - ¿Cuál es el resultado esperado al ejecutar el siguiente
+# código?
+
+def my_fun(n):
+    s = '+'
+    for i in range(n):
+        s += s
+        yield s
+
+for x in my_fun(2):
+    print(x, end='')
+
+"""
+    Opciones:
+
+    El código imprimirá +
+    El código imprimirá ++++++ / Respuesta
+    El códgio imprimirá +++
+    El códgio imprimirá ++
+"""
+
+
+# Pregunta 26 - ¿Cuál es el resultado esperado al ejecutar el siguiente
+# código?
+
+class I:
+    def __init__(self):
+        self.s = 'abc'
+        self.i = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.i == len(self.s):
+            raise StopIteration
+        v = self.s[self.i]
+        self.i += 1
+        return v
+
+
+for x in I():
+    print(x, end='')
+
+
+"""
+    Opciones:
+
+    - El código imprimirá abc / Respuesta
+    - El código imprimirá 210
+    - El código imprimirá 012
+    - El código imprimirá cba
+"""
+
+
+# Pregunta 27 - ¿Cuál es el resultado esperado al ejecutar el siguiente
+# código?
+
+def o(p):
+    def q():
+        return '*' * p
+    return q
+
+r = o(1)
+s = o(2)
+print(r() + s())
+
+
+"""
+    Opciones:
+
+    - El código imprimirá *** / Respuesta
+    - El código imprimirá *
+    - El código imprimirá **
+    - El códiog imprimirá ****
+"""
+
+
+# Pregunta 28 - Si s es un stream abierto en modo lectura, la siguiente
+# línea: q = s.read(1)
+
+# leerá:
+
+"""
+    Opciones:
+
+    - Una línea del stream
+    - Un kilobyte del stream 
+    - un buffer del stream
+    - un carácter del stream / Respuesta
+"""
+
+
+# Pregunta 29 - Suponiendo que la invocación open() se ha realizado correctamente,
+# el siguiente fragmento de código.
+
+""" 
+    for x in open('file', 'rt'):
+        print(x) 
+"""
+
+# será:
+
+"""
+    Opciones:
+
+    - Leerá el archivo línea por línea. / Respuesta
+    - Leerá todo el archivo en una sola vez.
+    - Provocará una excepción.
+    - Leerá el archivo carácter por carácter. 
+"""
+
+
+# Pregunta 30 - Si deseas llenar un arreglo de bytes con datos leídos
+# de un stream, ¿qué método puedes usar?
+
+"""
+    Opciones:
+
+    - El método readbytes()
+    - El método readfrom()
+    - El método read()
+    - El método readinto() / Respuesta
+"""
