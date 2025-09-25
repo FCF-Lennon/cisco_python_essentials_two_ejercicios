@@ -6,7 +6,7 @@
 # Elige la forma correcta de invocar la función fun():
 
 """
-    - fun() / Respuesata
+    - fun() / Respuesta
     - mod:fun()
     - mod.fun()
     - mod::fun()
@@ -105,8 +105,8 @@ print(__name__)
     
     - Uno o más bloque except: serán ejecutados.
     - Ninguno de los bloques except: será ejecutado.
-    - No más de un bloque except: será ejecutado. 
-    - Exactamente un bloque except: será ejecutado. / Respuesta
+    - No más de un bloque except: será ejecutado. / Respuesta
+    - Exactamente un bloque except: será ejecutado. 
 """
 
 
@@ -126,7 +126,7 @@ except:
 
     - b
     - Un mensaje de error.
-    - a / Reespuesta
+    - a / Respuesta
     - 1
 """
 
@@ -443,8 +443,8 @@ for x in my_fun(2):
 
     El código imprimirá +
     El código imprimirá ++++++ / Respuesta
-    El códgio imprimirá +++
-    El códgio imprimirá ++
+    El código imprimirá +++
+    El código imprimirá ++
 """
 
 
@@ -500,7 +500,7 @@ print(r() + s())
     - El código imprimirá *** / Respuesta
     - El código imprimirá *
     - El código imprimirá **
-    - El códiog imprimirá ****
+    - El código imprimirá ****
 """
 
 
@@ -550,3 +550,196 @@ print(r() + s())
     - El método read()
     - El método readinto() / Respuesta
 """
+
+
+# Pregunta 31 - ¿Cuál de los siguientes comandos usarias para verificar
+# la versión de pip? (Selecciona dos respuestas)
+
+"""
+    Opciones:
+
+    - pip version
+    - pip-version
+    - pip --version / Respuesta
+    - pip3 --version / Respuesta
+"""
+
+
+# Pregunta 32 - ¿Cuál comando pip usarias para desinstalar un paquete
+# previamente instalado?
+
+"""
+    Opciones:
+
+    - pip uninstall nombre_del_paquete / Respuesta
+    - pip delete nombre_del_paquete
+    - pip --remove nombre_del_paquete
+    - pip --unistall nombre_del_paquete
+"""
+
+
+# Pregunta 33 - Observa el siguiente código:
+
+"""
+    numbers = [0, 2, 7, 9, 10]
+    # Inserta la línea de código aquí.
+    print(list(foo))
+"""
+
+# ¿Qué línea insertarias para que el programa produzca la salida esperada?
+# [0, 4, 49, 81, 100]
+
+"""
+    Opciones:
+
+    - foo = map(lambda num: num ** 2, numbers) / Respuesta
+    - foo = filter(lambda num: num ** 2, numbers)
+    - foo = lambda num: num ** 2, numbers
+    - foo = lambda num: num * 2, numbers
+"""
+
+
+# Pregunta 34 - Observa el siguiente código:
+
+""" 
+    numbers = [i*i for i in range(5)]
+    # Inserta la línea de código aquí.
+    print(foo) 
+"""
+
+# ¿Qué línea insertarias para que el programa produzca la salida esperada?
+# Salida: [1, 9]
+
+"""
+    Opciones:
+
+    - foo = list(map(lambda x: x // 2, numbers))
+    - foo = list(filter(lambda x: x / 2, numbers))
+    - foo = list(map(lambda x: x % 2, numbers))
+    - foo = list(filter(lambda x: x % 2, numbers)) / Respuesta 
+"""
+
+
+# Pregunta 35 - Observa el código a continuación:
+
+""" 
+    import random
+    # Inserta las líneas de código aquí.
+    print(a, b, c) 
+"""
+
+# ¿Qué líneas de código insertarias para que sea posible que el programa
+# genere la siguiente salida?: 6 82 0
+
+"""
+    Opciones:
+
+    - A:
+      a = random.randrange(10, 100, 3)
+      b = random.randint(0, 100)
+      c = random.choice((0, 100, 3))
+
+    - B: 
+      a = random.choice((0, 100, 3))
+      b = random.randrange(10, 100, 3)
+      c = random.randint(0, 100)
+
+    - C: / Respuesta
+      a = random.randint(0, 100)
+      b = random.randrange(10, 100, 2)
+      c = random.choice((0, 100, 3))
+
+    - D:
+      a = random.randint(0, 100)
+      b = random.choice((0, 100, 3))
+      c = random.randrange(10, 100, 3)
+
+"""
+
+
+# Pregunta 36 - ¿Cuál es el resultado esperado del siguiente código?
+
+""" 
+    import os
+
+    os.mkdir('pictures')
+    os.chdir('pictures')
+
+    print(os.getcwd()) 
+"""
+
+"""
+    Opciones:
+
+    - El código imprimirá el contenido del directorio creado.
+    - El código imprimirá la ruta al directorio creado. / Respuesta
+    - El código imprimirá el propietario del directorio creado.
+    - El código imprimirá el nombre del directorio creado.
+"""
+
+
+# Pregunta 37 - ¿Qué información se puede leer usando la función uname
+# proporcionada por el módulo os? (Selecciona dos respuestas)
+
+"""
+    Opciones:
+
+    - Última fecha de inicio de sesión.
+    - Nombre del sistema operativo. / Respuesta
+    - Ruta actual.
+    - Identificador de hardware. / Respuesta
+"""
+
+
+# Pregunta 38 - ¿Cuál es el resultado esperado del siguiente código?
+
+from datetime import datetime
+
+datetime_1 = datetime(2019, 11, 27, 11, 27, 22)
+datetime_2 = datetime(2019, 11, 27, 0, 0, 0)
+
+print(datetime_1 - datetime_2)
+
+"""
+    Opciones:
+
+    - 11:27:22 / Respuesta
+    - 0 days, 11:27:22 
+    - 0 days
+    - 11 hours, 27 minutes, 22 seconds
+"""
+
+
+# Pregunta 39 - ¿Cuál es el resultado esperado del siguiente código?
+
+from datetime import timedelta
+
+delta = timedelta(weeks=1, days=7, hours=11)
+print(delta * 2)
+
+"""
+    Opciones:
+
+    - 28 days, 22:00:00 / Respuesta 
+    - 7 days, 22:00:00
+    - 2 weeks, 14 days, 22 hours
+    - El código generará una excepción
+"""
+
+
+# Pregunta 40 - ¿Cuál es el resultado esperado del siguiente código?
+
+import calendar
+
+calendar.setfirstweekday(calendar.SUNDAY)
+print(calendar.weekheader(3))
+
+"""
+    Opciones:
+
+    - Sun Mon Tue Wed Thu Fri Sat / Respuesta
+    - Tu
+    - Su Mo Tu We Thu Fr Sa
+    - Tue
+"""
+
